@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: "{{ .Values.name }}-config-map"
+  namespace: {{ .Release.Namespace }}
+data:
+  gitlab.rb: |
+    external_url 'http://gitlab.codeparce'
+    puma['worker_processes'] = 1
+    puma['threads'] = [1, 2]
+    sidekiq['concurrency'] = 3
+    prometheus_monitoring['enable'] = false
+    gitlab_rails['gitlab_shell_ssh_port'] = 2222
