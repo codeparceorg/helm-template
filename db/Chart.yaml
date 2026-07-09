@@ -1,0 +1,6 @@
+apiVersion: v2
+name: DB-template
+description: Template para levnatar bases postgres en el cluster
+type: database
+version: 1.0.0
+appVersion: "1.0.0"

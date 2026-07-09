@@ -1,0 +1,27 @@
+  # Información básica del recurso
+name: ${GITHUB_REPOSITORY_NAME}
+namespace: ${NS}
+
+  # Etiquetas (Labels)
+metadata:
+  namespace: ${NS}
+  environment: ${GITHUB_REF_NAME}
+  owner: ${GITHUB_ACTOR}
+  commit: ${GITHUB_SHA}
+
+  # Red
+ingress:
+  entry: "web"
+  port: 80
+  host: "database.${NS}.lab"
+
+
+  # Servicio
+service:
+  name: ${SVC_NAME}
+  port: 5432
+
+  # Contenedor
+container:
+  image: gpostgres:16-alpine
+  port: 5432
