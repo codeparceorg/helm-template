@@ -23,5 +23,5 @@ service:
 
   # Contenedor
 container:
-  image: gpostgres:16-alpine
+  image: postgres:16-alpine
   port: 5432
