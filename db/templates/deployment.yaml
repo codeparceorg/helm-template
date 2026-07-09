@@ -21,9 +21,6 @@ spec:
       labels:
         app: {{ .Values.name }}
     spec:
-      imagePullSecrets:
-          - name: ghcr-secret
-
       containers:
         - name: {{ .Values.name }}
           image: {{ .Values.container.image }}
