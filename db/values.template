@@ -11,7 +11,7 @@ metadata:
 
   # Red
 ingress:
-  entry: "web"
+  entry: "postgres"
   port: 80
   host: "postgres.${NS}.lab"
 
