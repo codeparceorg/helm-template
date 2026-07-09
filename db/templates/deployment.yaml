@@ -27,7 +27,13 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: {{ .Values.container.port }}
-
+      env:
+        - name: POSTGRES_DB
+          value: {{ .Values.database.name }}
+        - name: POSTGRES_USER
+          value: {{ .Values.database.user }}
+        - name: POSTGRES_PASSWORD
+          value: {{ .Values.database.password }}
           resources:
             limits:
               cpu: "1"

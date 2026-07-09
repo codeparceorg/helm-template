@@ -25,3 +25,8 @@ service:
 container:
   image: postgres:16-alpine
   port: 5432
+
+database:
+  name: mi_banca
+  user: admin
+  password: admin_2026
