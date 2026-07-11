@@ -24,3 +24,7 @@ ingress:
 container:
   image: ghcr.io/${GITHUB_ORG}/${GITHUB_REPOSITORY_NAME}:${IMAGE_TAG}
   port: 80
+
+monitoring:
+  path: /user/metrics
+  interval: 15s
