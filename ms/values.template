@@ -26,5 +26,5 @@ container:
   port: 80
 
 monitoring:
-  path: /user/metrics
+  path: /users/metrics
   interval: 15s
