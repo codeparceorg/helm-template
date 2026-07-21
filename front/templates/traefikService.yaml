@@ -3,6 +3,7 @@ kind: TraefikService
 
 metadata:
   name: {{ .Values.name }}
+  namespace: {{ .Values.namespace }}
   annotations:
     rollouts.argoproj.io/managed-by: {{ .Values.name }}
 spec:
