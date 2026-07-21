@@ -1,3 +1,6 @@
+deployment:
+  strategy: rollout
+
   # Información básica del recurso
 name: ${GITHUB_REPOSITORY_NAME}
 namespace: sis-${GITHUB_REF_NAME}-front

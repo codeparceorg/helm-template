@@ -22,5 +22,5 @@ spec:
     - match: Host(`{{ .Values.ingress.host }}`) && PathPrefix(`{{ .Values.ingress.path }}`)
       kind: Rule
       services:
-        - name: {{ .Values.name }}-svc
-          port: {{ .Values.service.port }}
+        - kind: TraefikService
+          name: {{ .Values.name }}

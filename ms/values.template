@@ -27,4 +27,4 @@ container:
 
 monitoring:
   path: ${MONITORING_PATH}
-  interval: 15s
+  interval: 10s

@@ -1,0 +1,64 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+
+metadata:
+  name: {{ .Values.name }}
+  namespace: {{ .Values.namespace }}
+
+  labels:
+    namespace: {{ .Values.namespace }}
+    repo: {{ .Values.name }}
+
+    environment: {{ .Values.metadata.environment }}
+    owner: {{ .Values.metadata.owner }}
+    commit: {{ .Values.metadata.commit }}
+
+spec:
+
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: {{ .Values.name }}
+
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.name }}
+
+    spec:
+      imagePullSecrets:
+      - name: ghcr-secret
+
+      containers:
+      - name: {{ .Values.name }}
+        image: {{ .Values.container.image }}
+        imagePullPolicy: Always
+        ports:
+        - containerPort: {{ .Values.container.port }}
+
+        resources:
+          limits:
+            cpu: "1"
+            memory: "500Mi"
+
+          requests:
+            cpu: "500m"
+            memory: "250Mi"
+
+  strategy:
+    canary:
+
+      stableService: {{ .Values.name }}-svc
+      canaryService: {{ .Values.name }}-canary-svc
+
+      steps:
+      - setWeight: 20
+      - pause:
+          duration: 60s
+
+      - setWeight: 50
+      - pause:
+          duration: 120s
+
+      - setWeight: 100

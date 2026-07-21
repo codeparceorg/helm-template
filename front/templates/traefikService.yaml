@@ -1,0 +1,18 @@
+apiVersion: traefik.io/v1alpha1
+kind: TraefikService
+
+metadata:
+  name: {{ .Values.name }}
+
+spec:
+  weighted:
+
+    services:
+
+      - name: {{ .Values.name }}-svc
+        port: 80
+        weight: 100
+
+      - name: {{ .Values.name }}-canary-svc
+        port: 80
+        weight: 0
