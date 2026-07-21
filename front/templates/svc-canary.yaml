@@ -12,8 +12,6 @@ metadata:
     commit: {{ .Values.metadata.commit }}
 
 spec:
-  selector:
-    app: {{ .Values.name }}
   ports:
     - name: entry         # 🔹 nombre obligatorio y único
       port: {{ .Values.service.port }}
