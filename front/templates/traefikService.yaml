@@ -10,9 +10,7 @@ spec:
     services:
 
       - name: {{ .Values.name }}-svc
-        port: 80
-        weight: 100
+        port: {{ .Values.service.port }}
 
       - name: {{ .Values.name }}-canary-svc
-        port: 80
-        weight: 0
+        port: {{ .Values.service.port }}

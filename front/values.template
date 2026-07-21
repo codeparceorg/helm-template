@@ -1,5 +1,8 @@
 deployment:
-  strategy: rollout
+  enabled: false
+
+rollout:
+  enabled: true
 
   # Información básica del recurso
 name: ${GITHUB_REPOSITORY_NAME}

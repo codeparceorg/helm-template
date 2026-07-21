@@ -17,6 +17,6 @@ spec:
   ports:
     - name: entry         # 🔹 nombre obligatorio y único
       port: {{ .Values.service.port }}
-      targetPort: {{ .Values.service.port }}
+      targetPort: {{ .Values.container.port }}
 
   type: ClusterIP
