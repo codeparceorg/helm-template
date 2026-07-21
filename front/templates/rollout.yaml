@@ -15,7 +15,7 @@ metadata:
 
 spec:
 
-  replicas: 1
+  replicas: 4
 
   selector:
     matchLabels:
@@ -52,9 +52,9 @@ spec:
       stableService: {{ .Values.name }}-svc
       canaryService: {{ .Values.name }}-canary-svc
 
-    trafficRouting:
-      traefik:
-        weightedTraefikServiceName: {{ .Values.name }}
+      trafficRouting:
+        traefik:
+          weightedTraefikServiceName: {{ .Values.name }}
 
       steps:
       - setWeight: 20
