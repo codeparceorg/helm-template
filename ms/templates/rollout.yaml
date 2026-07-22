@@ -28,7 +28,7 @@ spec:
           weightedTraefikServiceName: {{ .Values.name }}-ts
       #scaleDownDelaySeconds: 10
       steps:
-      - setWeight: 20
+      - setWeight: 0
       - pause: {}
 
       - setWeight: 30
@@ -37,7 +37,7 @@ spec:
 
       - setWeight: 40
       - pause:
-          duration: 10s
+          duration: 20s
 
       - setWeight: 60
       - pause:
