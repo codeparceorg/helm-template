@@ -8,8 +8,11 @@ metadata:
     rollouts.argoproj.io/managed-by: {{ .Values.name }}
 spec:
   weighted:
-    services:
+    sticky:
+    cookie:
+      name: {{ .Values.name }}-cookie
 
+    services:
       - name: {{ .Values.name }}-svc
         port: {{ .Values.service.port }}
 

@@ -15,10 +15,10 @@ metadata:
     commit: {{ .Values.metadata.commit }}
 
 spec:
-  replicas: 2
+  replicas: 1
   strategy:
     canary:
-      maxSurge: 2
+      maxSurge: 1
       maxUnavailable: 0
       stableService: {{ .Values.name }}-svc
       canaryService: {{ .Values.name }}-canary-svc
@@ -45,6 +45,7 @@ spec:
 
       - setWeight: 100
   revisionHistoryLimit: 1
+  
   selector:
     matchLabels:
       app: {{ .Values.name }}
