@@ -12,7 +12,6 @@ metadata:
     commit: {{ .Values.metadata.commit }}
 
 spec:
-
   ports:
     - name: stable         # 🔹 nombre obligatorio y único
       port: {{ .Values.service.port }}

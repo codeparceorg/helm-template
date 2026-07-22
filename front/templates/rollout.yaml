@@ -20,12 +20,12 @@ spec:
     canary:
       maxSurge: 2
       maxUnavailable: 0
-      #stableService: {{ .Values.name }}-svc
-      #canaryService: {{ .Values.name }}-canary-svc
+      stableService: {{ .Values.name }}-svc
+      canaryService: {{ .Values.name }}-canary-svc
 
-      trafficRouting:
-        traefik:
-          weightedTraefikServiceName: {{ .Values.name }}
+      # trafficRouting:
+      #   traefik:
+      #     weightedTraefikServiceName: {{ .Values.name }}
       #scaleDownDelaySeconds: 10
       steps:
       - setWeight: 20
