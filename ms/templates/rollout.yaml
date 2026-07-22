@@ -63,7 +63,14 @@ spec:
         image: {{ .Values.container.image }}
         imagePullPolicy: Always
         ports:
-        - containerPort: {{ .Values.container.port }}
+          - containerPort: {{ .Values.container.port }}
+
+        volumeMounts:
+        - name: env-file
+          mountPath: /app/.env
+          subPath: .env
+
+
         resources:
           requests:
             cpu: 100m
@@ -73,5 +80,9 @@ spec:
             cpu: 300m
             memory: 256Mi
 
+      volumes:
+      - name: env-file
+        configMap:
+          name: {{ .Values.name }}-env-file
 
 {{- end }}
