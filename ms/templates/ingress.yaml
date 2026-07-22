@@ -24,3 +24,7 @@ spec:
       services:
         - name: {{ .Values.name }}-svc
           port: {{ .Values.service.port }}
+
+      # services:
+      #   - kind: TraefikService
+      #     name: {{ .Values.name }}-ts

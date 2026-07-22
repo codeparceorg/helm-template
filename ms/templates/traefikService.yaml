@@ -2,19 +2,19 @@ apiVersion: traefik.io/v1alpha1
 kind: TraefikService
 
 metadata:
-  name: {{ .Values.name }}-ts
+  name: {{ .Values.name }}
   namespace: {{ .Values.namespace }}
   annotations:
     rollouts.argoproj.io/managed-by: {{ .Values.name }}
 spec:
   weighted:
     sticky:
-    cookie:
-      name: {{ .Values.name }}-cookie
+      cookie:
+        name: {{ .Values.name }}-cookie
 
     services:
       - name: {{ .Values.name }}-svc
         port: {{ .Values.service.port }}
 
-      # - name: {{ .Values.name }}-canary-svc
-      #   port: {{ .Values.service.port }}
+      - name: {{ .Values.name }}-canary-svc
+        port: {{ .Values.service.port }}

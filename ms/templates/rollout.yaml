@@ -17,15 +17,33 @@ metadata:
 spec:
   replicas: 1
   strategy:
-    blueGreen:
+    canary:
       maxSurge: 1
       maxUnavailable: 0
-      activeService: {{ .Values.name }}-svc
-      previewService: {{ .Values.name }}-pws-svc
+      stableService: {{ .Values.name }}-svc
+      canaryService: {{ .Values.name }}-canary-svc
 
-      autoPromotionEnabled: false
-      scaleDownDelaySeconds: 30
+      # trafficRouting:
+      #   traefik:
+      #     weightedTraefikServiceName: {{ .Values.name }}-ts
+      #scaleDownDelaySeconds: 10
+      steps:
+      - setWeight: 20
+      - pause: {}
 
+      - setWeight: 30
+      - pause:
+          duration: 20s
+
+      - setWeight: 40
+      - pause:
+          duration: 10s
+
+      - setWeight: 60
+      - pause:
+          duration: 10s
+
+      - setWeight: 100
   revisionHistoryLimit: 1
   
   selector:
