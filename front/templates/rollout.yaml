@@ -21,11 +21,11 @@ spec:
       maxSurge: 1
       maxUnavailable: 0
       stableService: {{ .Values.name }}-svc
-      canaryService: {{ .Values.name }}-canary-svc
+      # canaryService: {{ .Values.name }}-canary-svc
 
-      trafficRouting:
-        traefik:
-          weightedTraefikServiceName: {{ .Values.name }}-ts
+      # trafficRouting:
+      #   traefik:
+      #     weightedTraefikServiceName: {{ .Values.name }}-ts
       #scaleDownDelaySeconds: 10
       steps:
       - setWeight: 20
