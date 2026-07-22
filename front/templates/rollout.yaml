@@ -20,7 +20,7 @@ spec:
     canary:
       maxSurge: 2
       maxUnavailable: 0
-      #stableService: {{ .Values.name }}-svc
+      stableService: {{ .Values.name }}-svc
       #canaryService: {{ .Values.name }}-canary-svc
 
       #trafficRouting:
