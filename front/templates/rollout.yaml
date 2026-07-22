@@ -16,8 +16,8 @@ metadata:
 
 spec:
 
-  replicas: 4
-  revisionHistoryLimit: 3
+  replicas: 1
+  revisionHistoryLimit: 1
   selector:
     matchLabels:
       app: {{ .Values.name }}
@@ -37,26 +37,34 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: {{ .Values.container.port }}
-
+        readinessProbe:
+          httpGet:
+            path: /actuator/health
+            port: {{ .Values.container.port }}
+          initialDelaySeconds: 10
+          periodSeconds: 5
+          timeoutSeconds: 2
+          failureThreshold: 3
         resources:
-          limits:
-            cpu: "1"
-            memory: "500Mi"
-
           requests:
-            cpu: "500m"
-            memory: "250Mi"
+            cpu: 100m
+            memory: 128Mi
+
+          limits:
+            cpu: 300m
+            memory: 256Mi
 
   strategy:
     canary:
-
+      maxSurge: 1
+      maxUnavailable: 0
       stableService: {{ .Values.name }}-svc
       canaryService: {{ .Values.name }}-canary-svc
 
       trafficRouting:
         traefik:
           weightedTraefikServiceName: {{ .Values.name }}
-      scaleDownDelaySeconds: 10
+      #scaleDownDelaySeconds: 10
       steps:
       - setWeight: 20
       - pause:
