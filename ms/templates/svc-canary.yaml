@@ -12,6 +12,8 @@ metadata:
     commit: {{ .Values.metadata.commit }}
 
 spec:
+  selector:
+    app: {{ .Values.name }}
   ports:
     - name: canary         # 🔹 nombre obligatorio y único
       port: {{ .Values.service.port }}
