@@ -16,4 +16,4 @@ spec:
 
       - name: {{ .Values.name }}-canary-svc
         port: {{ .Values.service.port }}
-        weight: 
+        weight: 0
