@@ -13,7 +13,7 @@ metadata:
 
 spec:
   ports:
-    - name: entry         # 🔹 nombre obligatorio y único
+    - name: canary         # 🔹 nombre obligatorio y único
       port: {{ .Values.service.port }}
       targetPort: {{ .Values.container.port }}
 
