@@ -74,11 +74,11 @@ spec:
         resources:
           requests:
             cpu: 100m
-            memory: 128Mi
+            memory: 258Mi
 
           limits:
-            cpu: 300m
-            memory: 256Mi
+            cpu: 600m
+            memory: 556Mi
 
       volumes:
       - name: env-file
