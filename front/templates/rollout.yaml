@@ -23,9 +23,9 @@ spec:
       stableService: {{ .Values.name }}-svc
       canaryService: {{ .Values.name }}-canary-svc
 
-      # trafficRouting:
-      #   traefik:
-      #     weightedTraefikServiceName: {{ .Values.name }}
+      trafficRouting:
+        traefik:
+          weightedTraefikServiceName: {{ .Values.name }}-ts
       #scaleDownDelaySeconds: 10
       steps:
       - setWeight: 20
