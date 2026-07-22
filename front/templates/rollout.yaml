@@ -56,15 +56,15 @@ spec:
       trafficRouting:
         traefik:
           weightedTraefikServiceName: {{ .Values.name }}
-      scaleDownDelaySeconds: 30
+      scaleDownDelaySeconds: 10
       steps:
       - setWeight: 20
       - pause:
-          duration: 60s
+          duration: 20s
 
       - setWeight: 50
       - pause:
-          duration: 120s
+          duration: 30s
 
       - setWeight: 100
 {{- end }}
