@@ -11,7 +11,9 @@ spec:
 
     services:
       - name: {{ .Values.name }}-svc
+        kind: Service
         port: {{ .Values.service.port }}
 
       - name: {{ .Values.name }}-canary-svc
+        kind: Service
         port: {{ .Values.service.port }}

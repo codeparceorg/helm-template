@@ -26,9 +26,10 @@ spec:
       # trafficRouting:
       #   traefik:
       #     weightedTraefikServiceName: {{ .Values.name }}-ts
+
       #scaleDownDelaySeconds: 10
       steps:
-      - setWeight: 0
+      - setWeight: 1
       - pause: {}
 
       - setWeight: 30
@@ -65,10 +66,10 @@ spec:
         ports:
           - containerPort: {{ .Values.container.port }}
 
-        # volumeMounts:
-        # - name: env-file
-        #   mountPath: /app/.env
-        #   subPath: .env
+        volumeMounts:
+        - name: env-file
+          mountPath: /app/.env
+          subPath: .env
 
 
         resources:
@@ -80,9 +81,9 @@ spec:
             cpu: 600m
             memory: 556Mi
 
-      # volumes:
-      # - name: env-file
-      #   configMap:
-      #     name: {{ .Values.name }}-env-file
+      volumes:
+      - name: env-file
+        configMap:
+          name: {{ .Values.name }}-env-file
 
 {{- end }}
